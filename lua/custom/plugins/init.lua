@@ -82,6 +82,7 @@ return {
   },
   {
     'David-Kunz/gen.nvim',
+    event = 'VeryLazy',
     opts = {
       model = 'llama3.2',
       no_auto_close = true,
