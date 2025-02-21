@@ -9,6 +9,10 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
+      win = { enabled = true },
+      scroll = { enabled = true },
+      indent = { enabled = true },
+      animate = { enabled = true },
       lazygit = { enabled = true },
       notifier = { enabled = true },
       dashboard = {
@@ -43,6 +47,44 @@ return {
         end,
         desc = 'Lazygit',
       },
+      {
+        '<leader>n',
+        function()
+          Snacks.notifier.show_history()
+        end,
+        desc = 'Notification History',
+      },
+    },
+  },
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {},
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+  },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
+  {
+    'akinsho/bufferline.nvim',
+    version = '*',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+  },
+  {
+    'David-Kunz/gen.nvim',
+    opts = {
+      model = 'llama3.2',
+      no_auto_close = true,
     },
   },
 }
