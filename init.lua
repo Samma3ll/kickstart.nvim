@@ -32,6 +32,7 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
+vim.env.EXECDIR = '/Users/goinn00/git/PGA/pga/robot/'
 -- Enable break indent
 vim.opt.breakindent = true
 
