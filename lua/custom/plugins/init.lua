@@ -81,16 +81,17 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons',
   },
   {
-    'David-Kunz/gen.nvim',
-    event = 'VeryLazy',
-    opts = {
-      model = 'llama3.2',
-      no_auto_close = true,
-    },
+    'tamton-aquib/staline.nvim',
   },
+  { 'augmentcode/augment.vim' },
   {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'samma3ll/neotest-robotframework',
+    },
   },
 }
