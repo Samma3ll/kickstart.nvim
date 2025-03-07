@@ -32,6 +32,12 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
+vim.api.nvim_create_autocmd('filetype', {
+  pattern = 'robot',
+  callback = function()
+    vim.bo.commentstring = '# %s'
+  end,
+})
 vim.env.EXECDIR = '/Users/goinn00/git/PGA/pga/robot/'
 -- Enable break indent
 vim.opt.breakindent = true
@@ -88,6 +94,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<leader>Tv', ':vsp | terminal<CR>', { desc = 'open terminal in vertical split' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -249,6 +256,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>x', group = 'Trouble [X]' },
+        { '<leader>T', group = '[T]erminal' },
       },
     },
   },
@@ -815,15 +823,18 @@ require('lazy').setup({
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
+        on_highlights = function(hl, colors)
+          hl.LineNrAbove = { fg = colors.cyan }
+          hl.LineNrBelow = { fg = colors.cyan }
+        end,
       }
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-storm'
+      vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -845,6 +856,8 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- mini comments
+      require('mini.comment').setup()
       -- mini sessions
       require('mini.sessions').setup()
       -- Simple and easy statusline.

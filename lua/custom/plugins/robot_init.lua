@@ -33,7 +33,7 @@ vim.api.nvim_create_user_command('RobotFixLsp', function()
       end,
       settings = {
         robot = {
-          configurationFile = 'robot.yaml',
+          configurationFile = '/Users/goinn00/git/PGA/pga/robot/robot.yaml',
           python = {
             executable = '/Users/goinn00/git/PGA/pga/.venv/bin/python',
           },
