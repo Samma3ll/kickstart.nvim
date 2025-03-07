@@ -6,4 +6,7 @@ return {
   vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Previous Buffer' }),
   -- Gen
   vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>', { desc = 'Open Gen menu' }),
+  -- Automaton
+  vim.keymap.set('n', '<leader>fml', '<CMD>CellularAutomaton make_it_rain<CR>'),
+  vim.keymap.set('n', '<leader>fmc', '<CMD>CellularAutomaton game_of_life<CR>'),
 }
