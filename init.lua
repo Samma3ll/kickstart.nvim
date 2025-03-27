@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd('filetype', {
     vim.bo.commentstring = '# %s'
   end,
 })
-vim.env.EXECDIR = '/Users/goinn00/git/PGA/pga/robot/'
+-- vim.env.EXECDIR = '/Users/goinn00/git/PGA/pga/robot/'
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -597,6 +597,7 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+        robotcode = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -856,6 +857,9 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- mini move
+      require('mini.move').setup()
+
       -- mini comments
       require('mini.comment').setup()
       -- mini sessions
@@ -953,5 +957,6 @@ require('lazy').setup({
   },
 })
 require('oil').setup()
+require('lspconfig').robotcode.setup {}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
